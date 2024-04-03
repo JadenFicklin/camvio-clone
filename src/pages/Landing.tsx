@@ -1,7 +1,7 @@
 export const Landing = () => {
   return (
     <>
-      <div>Landing</div>
+      <div>The Next Evolution of Billing Systems</div>
     </>
   )
 }
