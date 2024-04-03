@@ -12,7 +12,23 @@ export default {
       xl: '1200px',
       xxl: '1400px',
     },
-    extend: {},
+    extend: {
+      colors: {
+        // main colors
+        max: '#363537',
+        min: '#FFFFFF',
+        accent: '#F5593D',
+        // text colors
+        med: '#3C4858',
+        light: '#9DA3AD',
+        // sub colors
+        subPink: '#E91E63',
+        subBlue: '#00BCD4',
+        subYellow: '#DD9933',
+        subGreen: '#81D742',
+        subPurple: '#8224E3',
+      },
+    },
   },
   plugins: [],
 }
