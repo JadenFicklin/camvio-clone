@@ -2,7 +2,7 @@ export const NavSub = () => {
   return (
     <>
       <nav className="w-full py-3 h-max bg-max">
-        <div className="flex flex-wrap justify-center w-8/12 mx-auto space-x-5 lg:justify-start text-min">
+        <div className="flex flex-wrap justify-center mx-auto space-x-5 sm:w-10/12 xl:w-8/12 lg:justify-start text-min">
           <div className="duration-150 cursor-pointer hover:text-gray-300">
             Announcements
           </div>
