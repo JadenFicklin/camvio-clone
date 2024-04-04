@@ -47,7 +47,7 @@ export const Nav = () => {
             {navOptions.map((item) => (
               <div
                 className={cn(
-                  ' cursor-pointer group font-extrabold text-[12px] text-black',
+                  ' cursor-pointer group font-extrabold text-[12px] text-max hover:text-opacity-60',
                 )}
                 onClick={() => setCurrentNav(item)}
               >
