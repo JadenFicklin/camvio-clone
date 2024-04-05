@@ -12,7 +12,7 @@ export const Nav = () => {
   return (
     <>
       <nav className="sticky top-0 bg-white lg:bg-opacity-0">
-        <div className="flex flex-wrap justify-between w-10/12 py-5 mx-auto duration-150 xl:w-8/12 text-min">
+        <div className="flex flex-wrap justify-between w-10/12 mx-auto duration-150 py-7 xl:w-8/12 text-min">
           <div className="w-48 duration-150 cursor-pointer sm:w-52 hover:opacity-70">
             <img src={camvio} className="w-full h-full" />
           </div>
@@ -42,18 +42,23 @@ export const Nav = () => {
             <HamburgerMenu clicked={hamburgerClicked} />
           </div>
         </div>
-        <div className="absolute w-full bg-white">
+        <div className="absolute w-full bg-white lg:hidden">
           <Drawer show={hamburgerClicked} duration={'500'}>
-            {navOptions.map((item) => (
-              <div
-                className={cn(
-                  ' cursor-pointer group font-extrabold text-[12px] text-max hover:text-opacity-60',
-                )}
-                onClick={() => setCurrentNav(item)}
-              >
-                {item}
+            <div className="w-10/12 py-3 mx-auto">
+              {navOptions.map((item) => (
+                <div
+                  className={cn(
+                    ' cursor-pointer group font-extrabold text-[12px] text-max hover:text-opacity-60 py-4',
+                  )}
+                  onClick={() => setCurrentNav(item)}
+                >
+                  {item}
+                </div>
+              ))}
+              <div className="p-4 my-2 px-6 font-extrabold duration-200 rounded-full cursor-pointer bg-accent h-max hover:bg-opacity-75 text-[12px] text-white">
+                REQUEST DEMO
               </div>
-            ))}
+            </div>
           </Drawer>
         </div>
       </nav>
