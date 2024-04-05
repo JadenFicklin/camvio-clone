@@ -11,9 +11,9 @@ export const Products = () => {
             efficient business model for future growth.
           </h3>
         </div>
-        <div className="flex flex-wrap justify-center max-w-[1100px]  mx-auto my-6">
+        <div className="flex flex-wrap justify-center max-w-[1200px]  mx-auto my-6">
           {products.map((item) => (
-            <div className="text-center flex flex-wrap justify-center max-w-[293px] flex-col items-center mx-7 my-10">
+            <div className="text-center flex justify-start max-w-[330px] flex-col items-center mx-7 my-10 ">
               <div className="size-12">{item.icon}</div>
               <div className="text-[23px] text-max py-4">{item.name}</div>
               <div className="text-[15px] text-max text-opacity-75">
