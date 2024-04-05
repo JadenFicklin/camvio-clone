@@ -1,5 +1,6 @@
 import { FaTwitter, FaLinkedinIn } from 'react-icons/fa'
 import { teamMembers } from '~/data/teamMembers'
+import city from '~/assets/images/hero.jpg'
 
 export const Team = () => {
   return (
@@ -13,7 +14,7 @@ export const Team = () => {
           </h3>
         </div>
         {/* profiles */}
-        <div className="max-w-[750px] w-[80%] mx-auto flex flex-wrap justify-center space-y-24 sxm:space-y-0 sxm:justify-between my-10">
+        <div className="max-w-[750px] w-[80%] mx-auto flex flex-wrap justify-center space-y-24 sxm:space-y-0 sxm:justify-between my-10 mb-28">
           {teamMembers.map((member) => (
             <div key={member.name} className="flex flex-col items-center">
               <div className="size-[120px] rounded-full overflow-hidden">
@@ -45,6 +46,10 @@ export const Team = () => {
             </div>
           ))}
         </div>
+        <img
+          src={city}
+          className="object-cover w-full h-20 bg-no-repeat brightness-50"
+        />
       </div>
     </>
   )

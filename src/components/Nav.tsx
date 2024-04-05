@@ -22,7 +22,7 @@ export const Nav = () => {
       <nav
         className={cn(
           'sticky top-0 bg-white z-40',
-          isSticky ? 'bg-white shadow-2xl' : 'lg:bg-opacity-0',
+          isSticky ? 'bg-white shadow-xl' : 'lg:bg-opacity-0',
         )}
       >
         <div
