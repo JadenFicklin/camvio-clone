@@ -22,7 +22,7 @@ export default {
         med: '#3C4858',
         light: '#9DA3AD',
         // sub colors
-        subPink: '#E91E63',
+        subRed: '#E91E63',
         subBlue: '#00BCD4',
         subYellow: '#DD9933',
         subGreen: '#81D742',

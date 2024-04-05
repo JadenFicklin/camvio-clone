@@ -6,9 +6,8 @@ import { cn } from '~/utils/cn'
 export const Nav = () => {
   const [currentNav, setCurrentNav] = useState('HOME')
   const [hamburgerClicked, setHamburgerClicked] = useState(false)
-  const [isSticky, setIsSticky] = useState(false) // Step 1
+  const [isSticky, setIsSticky] = useState(false)
   const navOptions = ['HOME', 'PRODUCTS', 'ABOUT', 'TEAM', 'CLIENTS', 'CONTACT']
-  console.log(isSticky)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,8 +21,8 @@ export const Nav = () => {
     <>
       <nav
         className={cn(
-          'sticky top-0 bg-white',
-          isSticky ? 'bg-white' : 'lg:bg-opacity-0',
+          'sticky top-0 bg-white z-40',
+          isSticky ? 'bg-white shadow-2xl' : 'lg:bg-opacity-0',
         )}
       >
         <div
@@ -37,8 +36,9 @@ export const Nav = () => {
           </div>
           {/* desktop */}
           <div className="items-center hidden lg:flex lg:flex-wrap lg:blocks">
-            {navOptions.map((item) => (
+            {navOptions.map((item, index) => (
               <div
+                key={index}
                 className={cn(
                   'relative h-full p-4 cursor-pointer group font-extrabold text-[12px]',
                   currentNav === item && 'text-accent',
@@ -65,8 +65,9 @@ export const Nav = () => {
         <div className="absolute w-full bg-white lg:hidden">
           <Drawer show={hamburgerClicked} duration={'500'}>
             <div className="w-10/12 py-3 mx-auto">
-              {navOptions.map((item) => (
+              {navOptions.map((item, index) => (
                 <div
+                  key={index}
                   className={cn(
                     ' cursor-pointer group font-extrabold text-[12px] text-max hover:text-opacity-60 py-4',
                   )}
