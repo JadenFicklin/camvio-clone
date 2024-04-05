@@ -7,9 +7,9 @@ export const Hero = () => {
         <img
           src={city}
           alt="city"
-          className="absolute top-0 object-cover w-full h-[95vh] bg-no-repeat bg-cover brightness-50 -z-10"
+          className="absolute top-0 object-cover w-full h-[95vh] bg-no-repeat bg-cover brightness-50 -z-10 pointer-events-none select-none"
         />
-        <div className="relative top-[10vh] sm:top-[20vh]">
+        <div className="absolute left-1/2 -translate-x-1/2 top-[20vh] sm:top-[33vh]">
           <div className="grid w-full place-content-center">
             <h1 className="text-6xl max-w-[800px]  font-bold text-center text-min">
               The Next Evolution of Billing Systems

@@ -1,7 +1,7 @@
 export const Products = () => {
   return (
     <>
-      <div>Products</div>
+      <div className="bg-blue-500 mt-[80vh]">Products</div>
     </>
   )
 }
