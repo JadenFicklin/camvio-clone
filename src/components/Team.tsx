@@ -27,7 +27,7 @@ export const Team = () => {
               <p className="text-[12px] font-bold text-opacity-75">
                 {member.title}
               </p>
-              <div className="flex flex-wrap justify-between w-[40%] mt-6">
+              <div className="flex flex-wrap justify-between w-[40%] mt-10">
                 <a
                   href={member.socials.twitter}
                   target="_blank"
