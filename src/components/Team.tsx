@@ -19,6 +19,7 @@ export const Team = () => {
             <div key={member.name} className="flex flex-col items-center">
               <div className="size-[120px] rounded-full overflow-hidden">
                 <img
+                  alt={member.imageSrc}
                   src={member.imageSrc}
                   className="object-cover rounded-full"
                 />
@@ -47,6 +48,7 @@ export const Team = () => {
           ))}
         </div>
         <img
+          alt="city"
           src={city}
           className="object-cover w-full h-20 bg-no-repeat brightness-50"
         />

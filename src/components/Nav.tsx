@@ -1,13 +1,23 @@
 import { useEffect, useState } from 'react'
 import camvio from '~/assets/images/camvio.png'
+import { useNavStore } from '~/globalState/themeStore'
 import { Drawer } from '~/utils/Drawer'
 import { HamburgerMenu } from '~/utils/HamburgerMenu'
 import { cn } from '~/utils/cn'
 export const Nav = () => {
-  const [currentNav, setCurrentNav] = useState('HOME')
   const [hamburgerClicked, setHamburgerClicked] = useState(false)
   const [isSticky, setIsSticky] = useState(false)
-  const navOptions = ['HOME', 'PRODUCTS', 'ABOUT', 'TEAM', 'CLIENTS', 'CONTACT']
+  type NavName = 'HOME' | 'PRODUCTS' | 'ABOUT' | 'TEAM' | 'CLIENTS' | 'CONTACT'
+  const navOptions: NavName[] = [
+    'HOME',
+    'PRODUCTS',
+    'ABOUT',
+    'TEAM',
+    'CLIENTS',
+    'CONTACT',
+  ]
+
+  const { nav, setNav } = useNavStore()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,9 +52,9 @@ export const Nav = () => {
                 className={cn(
                   'relative h-full p-4 cursor-pointer group font-extrabold text-[12px] text-min',
                   isSticky && 'hover:text-accent duration-150 text-max',
-                  currentNav === item && 'text-accent',
+                  nav === item && 'text-accent',
                 )}
-                onClick={() => setCurrentNav(item)}
+                onClick={() => setNav(item)}
               >
                 {item}
                 <div className="absolute top-0 w-0 h-full duration-200 -translate-x-1/2 bg-min bg-opacity-20 left-1/2 group-hover:w-full"></div>
@@ -71,7 +81,7 @@ export const Nav = () => {
                   className={cn(
                     ' cursor-pointer group font-extrabold text-[12px] text-max hover:text-opacity-60 py-4',
                   )}
-                  onClick={() => setCurrentNav(item)}
+                  onClick={() => setNav(item)}
                 >
                   {item}
                 </div>

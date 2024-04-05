@@ -9,7 +9,6 @@ export const About = () => {
           backgroundImage: `url(${city})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          // filter: 'brightness(75%)',
         }}
       >
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-65"></div>

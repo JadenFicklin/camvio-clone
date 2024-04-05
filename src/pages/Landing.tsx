@@ -7,19 +7,39 @@ import { NavSub } from '~/components/NavSub'
 import { Products } from '~/components/Products'
 import { Team } from '~/components/Team'
 import { Testimonials } from '~/components/Testimonials'
+import UsePosition from '~/utils/UsePosition'
 
 export const Landing = () => {
   return (
     <>
       <NavSub />
       <Nav />
-      <Hero />
-      <Products />
-      <About />
-      <Team />
-      <Testimonials />
+
+      <UsePosition>
+        <Hero />
+      </UsePosition>
+
+      <UsePosition>
+        <Products />
+      </UsePosition>
+
+      <UsePosition>
+        <About />
+      </UsePosition>
+
+      <UsePosition>
+        <Team />
+      </UsePosition>
+
+      <UsePosition>
+        <Testimonials />
+      </UsePosition>
+
       <Clients />
-      <Contact />
+
+      <UsePosition>
+        <Contact />
+      </UsePosition>
     </>
   )
 }

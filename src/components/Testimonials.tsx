@@ -23,6 +23,7 @@ export const Testimonials = () => {
                 <div className="h-[6px]"></div>
               )}
               <img
+                alt={testimonial.imageSrc}
                 src={testimonial.imageSrc}
                 className="object-cover bg-no-repeat"
               />
