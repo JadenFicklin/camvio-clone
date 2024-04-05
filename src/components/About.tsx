@@ -29,11 +29,11 @@ export const About = () => {
             produce revenue and become the technology leaders of tomorrow.
           </p>
           <p className="text-[18px] text-min text-center">
-            Our <span className="font-bold text-[18px]">Vision</span> is to not
-            only provide a powerful tool for organizations to operate their
-            businesses more efficiently, but to also become a trusted advisor
-            and partner in their future development. Our ultimate goal is to
-            provide a software platform so easy to use, that there is very
+            Our <span className="font-bold text-[18px] text-min">Vision</span>{' '}
+            is to not only provide a powerful tool for organizations to operate
+            their businesses more efficiently, but to also become a trusted
+            advisor and partner in their future development. Our ultimate goal
+            is to provide a software platform so easy to use, that there is very
             little training needed for implementation. Being ten steps ahead of
             the curve is where we intend to stay. Your software solution should
             provide you functions and features that you didn’t even know you

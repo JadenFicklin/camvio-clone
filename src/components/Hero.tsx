@@ -19,10 +19,10 @@ export const Hero = () => {
             Change to Simplicity, Change to Camvio
           </h2>
           <div className="grid justify-center w-full grid-rows-2 space-y-6 sm:space-y-0  sm:flex  sm:max-w-[380px] sm:mx-auto sm:justify-between place-items-center sm:mt-8 ">
-            <button className="px-8 py-5 font-bold text-white rounded-md h-max w-max bg-accent hover:bg-opacity-75">
+            <button className="px-8 py-5 font-bold rounded-md text-min h-max w-max bg-accent hover:bg-opacity-75">
               GET QUOTE
             </button>
-            <button className="py-3 px-6 border-2 border-white rounded-[26px] text-white font-bold hover:opacity-80">
+            <button className="py-3 px-6 border-2 border-min rounded-[26px] text-min font-bold hover:opacity-80">
               LEARN MORE ABOUT US
             </button>
           </div>

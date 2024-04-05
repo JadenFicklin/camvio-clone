@@ -40,14 +40,14 @@ export const Nav = () => {
               <div
                 key={index}
                 className={cn(
-                  'relative h-full p-4 cursor-pointer group font-extrabold text-[12px]',
+                  'relative h-full p-4 cursor-pointer group font-extrabold text-[12px] text-min',
+                  isSticky && 'hover:text-accent duration-150 text-max',
                   currentNav === item && 'text-accent',
-                  isSticky && 'hover:text-accent duration-150',
                 )}
                 onClick={() => setCurrentNav(item)}
               >
                 {item}
-                <div className="absolute top-0 w-0 h-full duration-200 -translate-x-1/2 bg-white bg-opacity-20 left-1/2 group-hover:w-full"></div>
+                <div className="absolute top-0 w-0 h-full duration-200 -translate-x-1/2 bg-min bg-opacity-20 left-1/2 group-hover:w-full"></div>
               </div>
             ))}
             <div className="p-4 px-7 mx-2 font-extrabold duration-200 rounded-full cursor-pointer bg-accent h-max hover:bg-opacity-75 text-[12px] text-min">
@@ -76,7 +76,7 @@ export const Nav = () => {
                   {item}
                 </div>
               ))}
-              <div className="p-4 my-2 px-6 font-extrabold duration-200 rounded-full cursor-pointer bg-accent h-max hover:bg-opacity-75 text-[12px] text-white">
+              <div className="p-4 my-2 px-6 font-extrabold duration-200 rounded-full cursor-pointer bg-accent h-max hover:bg-opacity-75 text-[12px] text-min">
                 REQUEST DEMO
               </div>
             </div>
