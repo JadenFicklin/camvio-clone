@@ -12,7 +12,7 @@ export const Testimonials = () => {
         {testimonials.map((testimonial) => (
           <div
             key={testimonial.name}
-            className="w-[283px] xl:w-[360px] rounded-lg h-max min-h-[400px] p-6 m-5"
+            className="w-[283px] xl:w-[360px] rounded-lg h-max min-h-[380px] p-6 m-5"
             style={{ backgroundColor: testimonial.color }}
           >
             <div

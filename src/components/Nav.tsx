@@ -4,6 +4,8 @@ import { useNavStore } from '~/globalState/themeStore'
 import { Drawer } from '~/utils/Drawer'
 import { HamburgerMenu } from '~/utils/HamburgerMenu'
 import { cn } from '~/utils/cn'
+import { useSectionsStore } from '~/globalState/useSectionStore'
+
 export const Nav = () => {
   const [hamburgerClicked, setHamburgerClicked] = useState(false)
   const [isSticky, setIsSticky] = useState(false)
@@ -18,6 +20,8 @@ export const Nav = () => {
   ]
 
   const { nav, setNav } = useNavStore()
+  const sections = useSectionsStore((state) => state.sections)
+  console.log(sections)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +30,25 @@ export const Nav = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const scrollToSection = (sectionName: NavName) => {
+    const section = sections[sectionName]
+    if (section) {
+      const shouldAdjustScroll = [
+        'PRODUCTS',
+        'ABOUT',
+        'TEAM',
+        'CLIENTS',
+      ].includes(sectionName)
+      const scrollPosition = shouldAdjustScroll ? section.y - 200 : section.y
+
+      window.scrollTo({
+        top: scrollPosition > 0 ? scrollPosition : 0,
+        behavior: 'smooth',
+      })
+      setNav(sectionName)
+    }
+  }
 
   return (
     <>
@@ -54,7 +77,7 @@ export const Nav = () => {
                   isSticky && 'hover:text-accent duration-150 text-max',
                   nav === item && 'text-accent',
                 )}
-                onClick={() => setNav(item)}
+                onClick={() => scrollToSection(item)}
               >
                 {item}
                 <div className="absolute top-0 w-0 h-full duration-200 -translate-x-1/2 bg-min bg-opacity-20 left-1/2 group-hover:w-full"></div>

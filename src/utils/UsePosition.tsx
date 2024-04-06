@@ -1,17 +1,14 @@
-import React, {
-  useRef,
-  useEffect,
-  ReactElement,
-  FunctionComponent,
-  ComponentClass,
-} from 'react'
+import React, { useRef, useEffect, ReactElement } from 'react'
+import { useSectionsStore } from '~/globalState/useSectionStore'
 
 interface UsePositionProps {
   children: ReactElement
+  name: string
 }
 
-const UsePosition: React.FC<UsePositionProps> = ({ children }) => {
+const UsePosition: React.FC<UsePositionProps> = ({ children, name }) => {
   const wrapperRef = useRef<HTMLDivElement>(null)
+  const setSection = useSectionsStore((state) => state.setSection)
 
   useEffect(() => {
     const isInViewport = (elem: HTMLElement): boolean => {
@@ -33,15 +30,7 @@ const UsePosition: React.FC<UsePositionProps> = ({ children }) => {
         const absoluteTop = top + scrollTop
         const isVisible = isInViewport(wrapperRef.current)
 
-        let componentName = 'Component'
-        if (typeof children.type === 'string') {
-          componentName = children.type
-        } else if (React.isValidElement(children)) {
-          const childType = children.type as FunctionComponent | ComponentClass
-          componentName = childType.displayName || childType.name || 'Component'
-        }
-
-        console.log(`${componentName}, ${absoluteTop}, ${isVisible}`)
+        setSection(name, absoluteTop, isVisible)
       }
     }
 
@@ -53,7 +42,7 @@ const UsePosition: React.FC<UsePositionProps> = ({ children }) => {
       window.removeEventListener('resize', updatePosition)
       window.removeEventListener('scroll', updatePosition)
     }
-  }, [children])
+  }, [children, name, setSection])
 
   return <div ref={wrapperRef}>{children}</div>
 }

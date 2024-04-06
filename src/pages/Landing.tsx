@@ -15,29 +15,29 @@ export const Landing = () => {
       <NavSub />
       <Nav />
 
-      <UsePosition>
+      <UsePosition name="HOME">
         <Hero />
       </UsePosition>
 
-      <UsePosition>
+      <UsePosition name="PRODUCTS">
         <Products />
       </UsePosition>
 
-      <UsePosition>
+      <UsePosition name="ABOUT">
         <About />
       </UsePosition>
 
-      <UsePosition>
+      <UsePosition name="TEAM">
         <Team />
       </UsePosition>
 
-      <UsePosition>
-        <Testimonials />
+      <Testimonials />
+
+      <UsePosition name="CLIENTS">
+        <Clients />
       </UsePosition>
 
-      <Clients />
-
-      <UsePosition>
+      <UsePosition name="CONTACT">
         <Contact />
       </UsePosition>
     </>
