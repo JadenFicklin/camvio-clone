@@ -1,48 +1,47 @@
-import React, { useRef, useEffect, ReactElement } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { useSectionsStore } from '~/globalState/useSectionStore'
 
 interface UsePositionProps {
-  children: ReactElement
+  children: React.ReactElement
   name: string
 }
 
 const UsePosition: React.FC<UsePositionProps> = ({ children, name }) => {
   const wrapperRef = useRef<HTMLDivElement>(null)
-  const setSection = useSectionsStore((state) => state.setSection)
+  const { setSection, setActiveSection } = useSectionsStore()
 
   useEffect(() => {
     const isInViewport = (elem: HTMLElement): boolean => {
       const rect = elem.getBoundingClientRect()
       return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <=
-          (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <=
-          (window.innerWidth || document.documentElement.clientWidth)
+        rect.bottom >= 0 &&
+        rect.top <=
+          (window.innerHeight || document.documentElement.clientHeight)
       )
     }
 
-    const updatePosition = () => {
+    const updatePositionAndVisibility = () => {
       if (wrapperRef.current) {
         const { top } = wrapperRef.current.getBoundingClientRect()
-        const scrollTop = window.scrollY || document.documentElement.scrollTop
-        const absoluteTop = top + scrollTop
+        const absoluteTop = top + window.scrollY
         const isVisible = isInViewport(wrapperRef.current)
-
         setSection(name, absoluteTop, isVisible)
+
+        if (isVisible) {
+          setActiveSection(name)
+        }
       }
     }
 
-    updatePosition()
-    window.addEventListener('resize', updatePosition)
-    window.addEventListener('scroll', updatePosition)
+    updatePositionAndVisibility()
+    window.addEventListener('resize', updatePositionAndVisibility)
+    window.addEventListener('scroll', updatePositionAndVisibility)
 
     return () => {
-      window.removeEventListener('resize', updatePosition)
-      window.removeEventListener('scroll', updatePosition)
+      window.removeEventListener('resize', updatePositionAndVisibility)
+      window.removeEventListener('scroll', updatePositionAndVisibility)
     }
-  }, [children, name, setSection])
+  }, [name, setSection, setActiveSection])
 
   return <div ref={wrapperRef}>{children}</div>
 }

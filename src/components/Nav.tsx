@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import camvio from '~/assets/images/camvio.png'
-import { useNavStore } from '~/globalState/themeStore'
 import { Drawer } from '~/utils/Drawer'
 import { HamburgerMenu } from '~/utils/HamburgerMenu'
 import { cn } from '~/utils/cn'
@@ -18,10 +17,8 @@ export const Nav = () => {
     'CLIENTS',
     'CONTACT',
   ]
-
-  const { nav, setNav } = useNavStore()
   const sections = useSectionsStore((state) => state.sections)
-  console.log(sections)
+  const { activeSection } = useSectionsStore((state) => state)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,22 +29,35 @@ export const Nav = () => {
   }, [])
 
   const scrollToSection = (sectionName: NavName) => {
-    const section = sections[sectionName]
-    if (section) {
-      const shouldAdjustScroll = [
-        'PRODUCTS',
-        'ABOUT',
-        'TEAM',
-        'CLIENTS',
-      ].includes(sectionName)
-      const scrollPosition = shouldAdjustScroll ? section.y - 200 : section.y
-
+    if (sectionName === 'HOME') {
       window.scrollTo({
-        top: scrollPosition > 0 ? scrollPosition : 0,
+        top: 0,
         behavior: 'smooth',
       })
-      setNav(sectionName)
+    } else {
+      const section = sections[sectionName]
+      if (section) {
+        const shouldAdjustScroll = [
+          'PRODUCTS',
+          'ABOUT',
+          'TEAM',
+          'CLIENTS',
+        ].includes(sectionName)
+        const scrollPosition = shouldAdjustScroll ? section.y - 300 : section.y
+
+        window.scrollTo({
+          top: scrollPosition > 0 ? scrollPosition : 0,
+          behavior: 'smooth',
+        })
+      }
     }
+  }
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
   }
 
   return (
@@ -64,7 +74,10 @@ export const Nav = () => {
             isSticky && 'text-max py-3',
           )}
         >
-          <div className="w-48 duration-150 cursor-pointer sm:w-52 hover:opacity-70">
+          <div
+            className="w-48 duration-150 cursor-pointer sm:w-52 hover:opacity-70"
+            onClick={scrollToTop}
+          >
             <img src={camvio} alt="camvio" className="w-full h-full" />
           </div>
           {/* desktop */}
@@ -75,7 +88,7 @@ export const Nav = () => {
                 className={cn(
                   'relative h-full p-4 cursor-pointer group font-extrabold text-[12px] text-min',
                   isSticky && 'hover:text-accent duration-150 text-max',
-                  nav === item && 'text-accent',
+                  activeSection === item && 'text-accent',
                 )}
                 onClick={() => scrollToSection(item)}
               >
@@ -104,7 +117,7 @@ export const Nav = () => {
                   className={cn(
                     ' cursor-pointer group font-extrabold text-[12px] text-max hover:text-opacity-60 py-4',
                   )}
-                  onClick={() => setNav(item)}
+                  onClick={() => scrollToSection(item)}
                 >
                   {item}
                 </div>
