@@ -7,14 +7,14 @@ interface SectionState {
       isVisible: boolean
     }
   }
-  activeSection: string | null // Add an activeSection state to track the currently active section
+  activeSection: string | null
   setSection: (name: string, y: number, isVisible: boolean) => void
-  setActiveSection: (name: string | null) => void // Method to update the active section
+  setActiveSection: (name: string | null) => void
 }
 
 export const useSectionsStore = create<SectionState>((set) => ({
   sections: {},
-  activeSection: null, // Initialize activeSection as null
+  activeSection: null,
   setSection: (name, y, isVisible) =>
     set((state) => ({
       sections: {

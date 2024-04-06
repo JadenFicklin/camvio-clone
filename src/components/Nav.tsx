@@ -29,6 +29,7 @@ export const Nav = () => {
   }, [])
 
   const scrollToSection = (sectionName: NavName) => {
+    setHamburgerClicked(false)
     if (sectionName === 'HOME') {
       window.scrollTo({
         top: 0,
@@ -54,6 +55,8 @@ export const Nav = () => {
   }
 
   const scrollToTop = () => {
+    setHamburgerClicked(false)
+
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
