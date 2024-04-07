@@ -1,6 +1,19 @@
 import city from '~/assets/images/hero.jpg'
+import { useSectionsStore } from '~/globalState/useSectionStore'
 
 export const Hero = () => {
+  const sections = useSectionsStore((state) => state.sections)
+
+  const scrollToAbout = () => {
+    const aboutSection = sections['ABOUT']
+    if (aboutSection) {
+      window.scrollTo({
+        top: aboutSection.y - 200,
+        behavior: 'smooth',
+      })
+    }
+  }
+
   return (
     <>
       <div>
@@ -22,7 +35,10 @@ export const Hero = () => {
             <button className="px-10 py-5 font-bold rounded-md text-min h-max w-max bg-accent hover:bg-opacity-75">
               GET QUOTE
             </button>
-            <button className="py-3 px-6 border-2 border-min rounded-[26px] text-min font-bold hover:opacity-80">
+            <button
+              className="py-3 px-6 border-2 border-min rounded-[26px] text-min font-bold hover:opacity-80"
+              onClick={scrollToAbout}
+            >
               LEARN MORE ABOUT US
             </button>
           </div>
