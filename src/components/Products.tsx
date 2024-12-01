@@ -15,7 +15,7 @@ export const Products = () => {
           {products.map((item, index) => (
             <div
               key={index}
-              className="text-center flex justify-start max-w-[330px] flex-col items-center mx-7 my-10 "
+              className="text-center flex justify-start max-w-[330px] flex-col items-center mx-7 my-10"
             >
               <div className="size-12">{item.icon}</div>
               <div className="text-[23px] text-max py-4">{item.name}</div>

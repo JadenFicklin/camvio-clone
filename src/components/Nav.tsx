@@ -20,14 +20,6 @@ export const Nav = () => {
   const sections = useSectionsStore((state) => state.sections)
   const { activeSection } = useSectionsStore((state) => state)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 0)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   const scrollToSection = (sectionName: NavName) => {
     setHamburgerClicked(false)
     if (sectionName === 'HOME') {
@@ -62,6 +54,14 @@ export const Nav = () => {
       behavior: 'smooth',
     })
   }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 0)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <>

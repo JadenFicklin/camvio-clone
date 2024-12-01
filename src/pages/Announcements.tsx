@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { NavSub } from '~/components/NavSub'
+// import { NavSub } from '~/components/NavSub'
 
 interface Pokemon {
   name: string
@@ -46,7 +46,7 @@ export const Announcements = () => {
   return (
     <>
       <div>
-        <NavSub />
+        {/* <NavSub /> */}
         <div>{number}</div>
         Announcements
         <button className="bg-blue-500" onClick={() => setNumber(number + 1)}>
